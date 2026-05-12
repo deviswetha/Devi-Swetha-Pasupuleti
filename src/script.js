@@ -555,14 +555,9 @@ if (contactForm) {
             title: "Explore Nearby Places",
             tagline: "Your Personal Guide to Infinite Discoveries",
             category: "Location Platform",
-            mediaType: 'gallery',
+            mediaType: 'video',
             banner: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80&w=1600",
-            gallery: [
-                "https://images.unsplash.com/photo-1501503060443-ef4ed10d009b?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1476970911582-701089906d4e?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1569336415962-a4bd9f6dfc0f?auto=format&fit=crop&q=80&w=800"
-            ],
+            video: "nb1 .mp4",
             github: "https://github.com/deviswetha",
             demo: "#",
             stack: ["Flask", "Python", "Leaflet.js", "OpenStreetMap API"],
