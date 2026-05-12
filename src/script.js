@@ -374,29 +374,107 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     initContactParticles();
 
-    // 12. Contact Form Handling
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('button');
-            const originalText = btn.innerHTML;
+    // ==========================================================================
+// 12. Contact Form Handling (Connect to Google Sheet)
+// ==========================================================================
+// SETUP INSTRUCTIONS:
+// 1. Open your sheet: https://docs.google.com/spreadsheets/d/1J-NTLbajksE1zKrxWkbBRUScCGjkGquFkbapHvQ58us/
+// 2. Go to Extensions > Apps Script
+// 3. Paste this code:
+/*
+  function doPost(e) {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = e.parameter;
+    sheet.appendRow([new Date(), data.name, data.email, data.message]);
+    return ContentService.createTextOutput("Success").setMimeType(ContentService.MimeType.TEXT);
+  }
+*/
+// 4. Click Deploy > New Deployment > Web App (Set "Who has access" to "Anyone")
+// 5. Paste the URL below:
+
+const SHOOT_URL = 'https://script.google.com/macros/s/AKfycbzA7ztZVpFUB8KwSIwKeszZvRhcCAboL3Jk6dQ1L6aXMZBZ1hcw5IZEPUZyErQ_4h3-HA/exec';
+
+
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const btn = contactForm.querySelector('#form-submit');
+        const originalText = btn.innerHTML;
+        
+        // 1. Show loading state
+        btn.disabled = true;
+        btn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Sending...';
+        if (window.lucide) window.lucide.createIcons();
+        
+        // 2. Reset status message
+        if (formStatus) {
+            formStatus.classList.add('hidden');
+            formStatus.textContent = '';
+            formStatus.className = 'text-center text-[10px] uppercase tracking-widest font-bold mt-4';
+        }
+
+        try {
+            // 3. Prepare Form Data using URLSearchParams for Google Apps Script compatibility
+            const formData = new FormData(contactForm);
+            const params = new URLSearchParams();
+
+            for (const pair of formData.entries()) {
+                params.append(pair[0], pair[1]);
+            }
+
+            // 4. Send the Request
+            // Note: mode 'no-cors' is used to bypass browser CORS restrictions with Google Scripts.
+            // This means we won't get a readable response body, but if the fetch succeeds, 
+            // the data has reached the script.
+            await fetch(SHOOT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                cache: 'no-cache',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                redirect: 'follow',
+                body: params
+            });
+
+            // 5. Handle Success
+            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Success!';
+            if (window.lucide) window.lucide.createIcons();
             
-            btn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Sending...';
-            lucide.createIcons();
+            contactForm.reset();
             
+            if (formStatus) {
+                formStatus.textContent = 'Message sent successfully!';
+                formStatus.classList.remove('hidden');
+                formStatus.classList.add('text-green-400');
+            }
+
+        } catch (err) {
+            // 6. Handle Errors
+            console.error('Form error:', err);
+            btn.innerHTML = '<i data-lucide="alert-circle" class="w-4 h-4"></i> Error';
+            if (window.lucide) window.lucide.createIcons();
+            
+            if (formStatus) {
+                formStatus.classList.remove('hidden');
+                formStatus.classList.add('text-red-400');
+                formStatus.textContent = 'Failed to send. Please check your connection.';
+            }
+        } finally {
+            // 7. Restore button after 4 seconds
             setTimeout(() => {
-                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Message Sent!';
-                lucide.createIcons();
-                contactForm.reset();
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    lucide.createIcons();
-                }, 3000);
-            }, 2000);
-        });
-    }
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                if (window.lucide) window.lucide.createIcons();
+                if (formStatus) formStatus.classList.add('hidden');
+            }, 4000);
+        }
+    });
+}
 
     // 13. Back to Top Logic
     const backToTopBtn = document.getElementById('back-to-top');
@@ -423,9 +501,14 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Adaptive Botnet Detection",
             tagline: "Securing the Future with Meta-Learning",
             category: "AI & Cybersecurity",
-            mediaType: 'video',
+            mediaType: 'gallery',
             banner: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1600",
-            video: "https://www.w3schools.com/html/mov_bbb.mp4", // Placeholder MP4
+            gallery: [
+                "b1.png",
+                "b2.png",
+                "b3.png",
+                "b4.jpg"
+            ],
             github: "https://github.com/deviswetha",
             demo: "#",
             stack: ["Python", "PyTorch", "Meta-Learning", "Network Security"],
@@ -448,10 +531,10 @@ document.addEventListener('DOMContentLoaded', () => {
             mediaType: 'gallery',
             banner: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=1600",
             gallery: [
-                "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80&w=800"
+                "d1.png",
+                "d2.png",
+                "d3.png",
+                "d4.png"
             ],
             github: "https://github.com/deviswetha",
             demo: "#",
@@ -472,9 +555,14 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Explore Nearby Places",
             tagline: "Your Personal Guide to Infinite Discoveries",
             category: "Location Platform",
-            mediaType: 'video',
+            mediaType: 'gallery',
             banner: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80&w=1600",
-            video: "https://www.w3schools.com/html/movie.mp4",
+            gallery: [
+                "https://images.unsplash.com/photo-1501503060443-ef4ed10d009b?auto=format&fit=crop&q=80&w=800",
+                "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80&w=800",
+                "https://images.unsplash.com/photo-1476970911582-701089906d4e?auto=format&fit=crop&q=80&w=800",
+                "https://images.unsplash.com/photo-1569336415962-a4bd9f6dfc0f?auto=format&fit=crop&q=80&w=800"
+            ],
             github: "https://github.com/deviswetha",
             demo: "#",
             stack: ["Flask", "Python", "Leaflet.js", "OpenStreetMap API"],

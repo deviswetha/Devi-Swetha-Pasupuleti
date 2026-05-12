@@ -978,29 +978,61 @@
                     </div>
                 </div>
 
-                <!-- Form Section -->
-                <div class="glass-card p-8 reveal reveal-right relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[60px] rounded-full"></div>
-                    <h3 class="text-2xl font-bold mb-6">Direct Message</h3>
-                    <form id="contact-form" class="space-y-5 relative z-10">
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-white/50 mb-2">FullName</label>
-                            <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all" placeholder="Enter your name">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-white/50 mb-2">Email Address</label>
-                            <input type="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all" placeholder="your@email.com">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-white/50 mb-2">Your Message</label>
-                            <textarea rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all resize-none" placeholder="Tell me about your project..."></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary w-full group flex items-center justify-center gap-2">
-                            <span>Send Message</span>
-                            <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
-                        </button>
-                    </form>
-                </div>
+<!-- Form Section -->
+<div class="glass-card p-8 reveal reveal-right relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[60px] rounded-full"></div>
+    <h3 class="text-2xl font-bold mb-6">Direct Message</h3>
+    
+    <form id="contact-form" class="space-y-5 relative z-10">
+        <!-- Name Field -->
+        <div>
+            <label for="name" class="block text-xs font-bold uppercase tracking-wider text-white/50 mb-2">Full Name</label>
+            <input 
+                type="text" 
+                id="name"
+                name="name" 
+                required 
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all" 
+                placeholder="Enter your name"
+            >
+        </div>
+
+        <!-- Email Field -->
+        <div>
+            <label for="email" class="block text-xs font-bold uppercase tracking-wider text-white/50 mb-2">Email Address</label>
+            <input 
+                type="email" 
+                id="email"
+                name="email" 
+                required 
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all" 
+                placeholder="your@email.com"
+            >
+        </div>
+
+        <!-- Message Field -->
+        <div>
+            <label for="message" class="block text-xs font-bold uppercase tracking-wider text-white/50 mb-2">Your Message</label>
+            <textarea 
+                id="message"
+                name="message" 
+                rows="4" 
+                required 
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all resize-none" 
+                placeholder="Tell me about your project..."
+            ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="form-submit" class="btn-primary w-full group flex items-center justify-center gap-2">
+            <span>Send Message</span>
+            <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+        </button>
+
+        <!-- Status Message -->
+        <div id="form-status" class="text-center text-[10px] uppercase tracking-widest font-bold mt-4 hidden"></div>
+    </form>
+</div>
             </div>
         </div>
     </section>
