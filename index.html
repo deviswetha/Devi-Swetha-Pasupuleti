@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devi Swetha | AI/ML & Python Developer</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Scripts & Styles -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Background Blobs -->
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+        <div class="blob bg-purple-600 top-0 -left-20"></div>
+        <div class="blob bg-cyan-600 bottom-0 -right-20" style="animation-delay: 2s;"></div>
+        <div class="blob bg-pink-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 py-4 transition-all duration-300">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold font-display neon-text">Devi Swetha</a>
+            
+            <!-- Desktop Menu (Main) -->
+            <div class="hidden lg:flex items-center space-x-10 text-[11px] uppercase tracking-widest font-bold">
+                <a href="#home" class="nav-link hover:text-purple-400 reveal" style="transition-delay: 100ms;">Home</a>
+                <a href="#about" class="nav-link hover:text-purple-400 reveal" style="transition-delay: 200ms;">About</a>
+                <a href="#skills" class="nav-link hover:text-purple-400 reveal" style="transition-delay: 300ms;">Skills</a>
+                <a href="#projects" class="nav-link hover:text-purple-400 reveal" style="transition-delay: 400ms;">Projects</a>
+                <a href="#testimonials" class="nav-link hover:text-purple-400 reveal" style="transition-delay: 450ms;">Testimonials</a>
+                <a href="#contact" class="nav-link hover:text-purple-400 reveal" style="transition-delay: 500ms;">Contact</a>
+            </div>
+
+            <!-- Hamburger (Always visible for secondary items) -->
+            <button id="sidebar-open-btn" class="text-white hover:text-purple-400 transition-all duration-300 hover:scale-110 active:scale-95">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile/Global Sidebar -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[60] opacity-0 pointer-events-none transition-all duration-500"></div>
+    <aside id="sidebar" class="fixed top-0 right-0 h-full w-[320px] bg-[#030014]/95 backdrop-blur-2xl border-l border-white/10 z-[70] translate-x-full transition-all duration-500 flex flex-col p-8 shadow-[-10px_0_30px_rgba(0,0,0,0.5)]">
+        <div class="flex justify-between items-center mb-16">
+            <span class="text-xl font-bold font-display neon-text">Menu</span>
+            <button id="sidebar-close-btn" class="text-white/50 hover:text-white transition-colors hover:rotate-90 duration-300">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <nav class="flex flex-col space-y-5 text-[12px] font-bold uppercase tracking-widest">
+            <a href="#services" class="sidebar-link group">
+                <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-purple-500/20 transition-all">
+                    <i data-lucide="briefcase" class="w-4 h-4 text-purple-400"></i>
+                </div>
+                <span class="text-white/60 group-hover:text-white">Services</span>
+            </a>
+            <a href="#activities" class="sidebar-link group">
+                <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/20 transition-all">
+                    <i data-lucide="award" class="w-4 h-4 text-cyan-400"></i>
+                </div>
+                <span class="text-white/60 group-hover:text-white">Activities</span>
+            </a>
+            <a href="#certifications" class="sidebar-link group text-white/60 hover:text-white flex items-center gap-4 transition-all">
+                <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-pink-500/20 transition-all">
+                    <i data-lucide="scroll" class="w-4 h-4 text-pink-400"></i>
+                </div>
+                <span>Certifications</span>
+            </a>
+            <a href="#interests" class="sidebar-link group">
+                <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-yellow-500/20 transition-all">
+                    <i data-lucide="star" class="w-4 h-4 text-yellow-400"></i>
+                </div>
+                <span class="text-white/60 group-hover:text-white">Interests</span>
+            </a>
+        </nav>
+
+        <div class="mt-auto pt-10 space-y-4">
+            <a href="https://drive.google.com/file/d/1kIdBArnMi-5j9ZkdxlMfoRttoWpZ7NPy/view?usp=sharing" target="_blank" class="w-full flex items-center justify-center gap-3 py-4 border border-white/10 rounded-2xl text-xs uppercase tracking-widest font-bold text-white/80 hover:bg-white/5 hover:border-white/20 transition-all">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                Resume
+            </a>
+            <a href="#contact" class="sidebar-btn-gradient py-5 shadow-[0_10px_20px_rgba(139,92,246,0.3)]">
+                Hire Me
+            </a>
+        </div>
+    </aside>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 px-6">
+        <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <h2 class="text-purple-400 font-medium mb-4 tracking-widest uppercase stagger-1">Welcome to my Portfolio</h2>
+                <h1 class="text-5xl md:text-7xl font-bold font-display mb-6 stagger-2">
+                    Hi, I'm <span class="neon-text shimmer-text">Devi Swetha</span>
+                </h1>
+                <div class="text-2xl md:text-3xl text-white/80 mb-8 h-12 stagger-3">
+                    <span id="typing-text"></span>
+                </div>
+                <p class="text-white/60 text-lg mb-10 max-w-xl stagger-4">
+                    I am a passionate AI/ML Developer and graduate in Artificial Intelligence and Data Science. 
+                    I build intelligent solutions and elegant web experiences.
+                </p>
+                <div class="flex flex-wrap gap-4 stagger-5">
+                    <a href="#contact" class="btn-primary">Hire Me</a>
+                    <a href="https://drive.google.com/file/d/1kIdBArnMi-5j9ZkdxlMfoRttoWpZ7NPy/view?usp=sharing" target="_blank" class="btn-secondary flex items-center gap-2">
+                        <i data-lucide="download" class="w-4 h-4"></i> Resume
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-center reveal stagger-3">
+                <div class="profile-container w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl animate-float">
+                    <img src="devipic.jpeg" alt="Devi Swetha" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 px-6 relative overflow-hidden bg-[#030014]">
+        <div class="about-grid-bg"></div>
+        <div class="about-glow top-0 left-0 bg-purple-600"></div>
+        <div class="about-glow bottom-0 right-0 bg-cyan-600"></div>
+
+        <div class="container mx-auto relative z-10">
+            <h2 class="section-title reveal shimmer-text mb-20 text-center">About Me</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left: Intro & AI Identity -->
+                <div class="reveal reveal-left">
+                    <div class="min-h-[40px] mb-4">
+                        <p id="about-typing-text" class="text-xl md:text-3xl text-purple-400 font-bold leading-relaxed"></p>
+                    </div>
+
+                    <div class="space-y-6 mb-8 text-white/80 leading-relaxed max-w-xl text-lg">
+                        <p class="reveal reveal-up stagger-1">
+                            I’m <span class="text-white font-bold border-b border-purple-500/50">Devi Swetha</span>, a recent graduate from NBKR Institute of Science and Technology with a B.Tech in Artificial Intelligence and Data Science. Passionate about AI and data-driven innovation, I enjoy exploring technologies that solve real-world problems. My journey has been shaped by curiosity, creativity, and continuous learning.
+                        </p>
+                        <p class="reveal reveal-up stagger-2">
+                            With a strong foundation in Python and hands-on project experience, I’m eager to build intelligent and impactful solutions. I enjoy collaborating on innovative ideas and expanding my knowledge in emerging technologies. As I step into the professional world, I look forward to growing in the fields of AI and data science.
+                        </p>
+                    </div>  
+
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <span class="tech-chip-mini reveal reveal-up stagger-1">Python</span>
+                        <span class="tech-chip-mini reveal reveal-up stagger-2">AI / ML</span>
+                        <span class="tech-chip-mini reveal reveal-up stagger-3">Full Stack</span>
+                        <span class="tech-chip-mini reveal reveal-up stagger-4">React</span>
+                        <span class="tech-chip-mini reveal reveal-up stagger-5">DevOps</span>
+                    </div>
+
+                    <!-- Dynamic Counters -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 pb-12 border-b border-white/5 reveal reveal-up stagger-3" id="counters-grid">
+                        <div class="space-y-1">
+                            <div class="counter-value" data-target="15">0</div>
+                            <div class="text-[10px] font-bold uppercase tracking-widest text-white/30">Projects Done</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="counter-value" data-target="12">0</div>
+                            <div class="text-[10px] font-bold uppercase tracking-widest text-white/30">Certifications</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="counter-value" data-target="8">0</div>
+                            <div class="text-[10px] font-bold uppercase tracking-widest text-white/30">Skills Mastered</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="counter-value" data-target="10">0</div>
+                            <div class="text-[10px] font-bold uppercase tracking-widest text-white/30">Events Led</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-6 reveal reveal-up stagger-4">
+                        <a href="#contact" class="btn-primary group flex items-center gap-3">
+                            Hire Me <i data-lucide="zap" class="w-4 h-4 group-hover:fill-current"></i>
+                        </a>
+                        <a href="https://drive.google.com/file/d/1kIdBArnMi-5j9ZkdxlMfoRttoWpZ7NPy/view?usp=sharing" target="_blank" class="btn-secondary group flex items-center gap-3">
+                            Resume <i data-lucide="download" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Interactive Info Cards -->
+                <div class="space-y-6">
+                    <!-- Education Card -->
+                    <div class="gradient-border-card reveal reveal-right">
+                        <div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+                                    <i data-lucide="graduation-cap" class="text-purple-400"></i>
+                                </div>
+                                <h3 class="text-xl font-bold">Education Journey</h3>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <h4 class="text-white font-bold">B.Tech Engineering</h4>
+                                    <p class="text-white/40 text-sm">NBKR Institute of Science & Technology</p>
+                                    <span class="text-xs text-purple-400 font-mono">2021 - 2025</span>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot bg-cyan-500 ring-cyan-500/20"></div>
+                                    <h4 class="text-white font-bold">Higher Secondary</h4>
+                                    <p class="text-white/40 text-sm">Narayana Junior College</p>
+                                    <span class="text-xs text-cyan-400 font-mono">2019 - 2021</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Experience Card -->
+                        <div class="gradient-border-card reveal reveal-up stagger-2">
+                            <div>
+                                <i data-lucide="layers" class="text-cyan-400 mb-4"></i>
+                                <h3 class="font-bold mb-2">Experiences</h3>
+                                <p class="text-white/40 text-xs leading-relaxed">Developing real-world AI applications and collaborating on open-source projects.</p>
+                            </div>
+                        </div>
+
+                        <!-- Achievements -->
+                        <div class="gradient-border-card reveal reveal-up stagger-3">
+                            <div>
+                                <i data-lucide="trophy" class="text-yellow-400 mb-4"></i>
+                                <h3 class="font-bold mb-2">Achievements</h3>
+                                <p class="text-white/40 text-xs leading-relaxed">Secured top ranks in university coding contests & hackathons.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leadership -->
+                    <div class="gradient-border-card reveal reveal-right stagger-4">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-bold">Leadership & Impact</h3>
+                                <i data-lucide="users" class="text-pink-400"></i>
+                            </div>
+                            <p class="text-white/40 text-sm">Active lead in technical student clubs, organizing workshops on emerging AI technologies and web development frameworks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 px-6 bg-white/[0.02]">
+        <div class="container mx-auto skills-section reveal">
+            <h2 class="section-title reveal shimmer-text">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Programming & Development -->
+                <div class="glass-card p-8 reveal stagger-1">
+                    <h3 class="text-xl font-bold mb-8 flex items-center gap-2">
+                        <i data-lucide="code" class="text-purple-400"></i> Programming & Dev
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Python</span>
+                                <span class="text-purple-400 font-bold">90%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">JavaScript</span>
+                                <span class="text-purple-400 font-bold">85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">HTML5</span>
+                                <span class="text-purple-400 font-bold">90%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">CSS3</span>
+                                <span class="text-purple-400 font-bold">85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">SQL</span>
+                                <span class="text-purple-400 font-bold">80%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend Development -->
+                <div class="glass-card p-8 reveal stagger-2">
+                    <h3 class="text-xl font-bold mb-8 flex items-center gap-2">
+                        <i data-lucide="layout" class="text-cyan-400"></i> Frontend Dev
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Tailwind CSS</span>
+                                <span class="text-cyan-400 font-bold">90%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Bootstrap</span>
+                                <span class="text-cyan-400 font-bold">85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">React.js</span>
+                                <span class="text-cyan-400 font-bold">85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend & Frameworks -->
+                <div class="glass-card p-8 reveal stagger-3">
+                    <h3 class="text-xl font-bold mb-8 flex items-center gap-2">
+                        <i data-lucide="server" class="text-indigo-400"></i> Backend & Frameworks
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Flask</span>
+                                <span class="text-indigo-400 font-bold">80%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Django</span>
+                                <span class="text-indigo-400 font-bold">80%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Node.js</span>
+                                <span class="text-indigo-400 font-bold">75%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Express.js</span>
+                                <span class="text-indigo-400 font-bold">75%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">RESTful APIs</span>
+                                <span class="text-indigo-400 font-bold">85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database & DevOps -->
+                <div class="glass-card p-8 reveal stagger-1">
+                    <h3 class="text-xl font-bold mb-8 flex items-center gap-2">
+                        <i data-lucide="database" class="text-blue-400"></i> Database & DevOps
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">PostgreSQL / MySQL</span>
+                                <span class="text-blue-400 font-bold">75%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Git & GitHub</span>
+                                <span class="text-blue-400 font-bold">90%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Docker</span>
+                                <span class="text-blue-400 font-bold">80%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">CI/CD</span>
+                                <span class="text-blue-400 font-bold">75%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI/ML Skills -->
+                <div class="glass-card p-8 reveal stagger-2">
+                    <h3 class="text-xl font-bold mb-8 flex items-center gap-2">
+                        <i data-lucide="brain-circuit" class="text-pink-400"></i> AI/ML Expertise
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">AI Foundations</span>
+                                <span class="text-pink-400 font-bold">90%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">NumPy & Pandas</span>
+                                <span class="text-pink-400 font-bold">85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Scikit-learn</span>
+                                <span class="text-pink-400 font-bold">80%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">ML Prototyping</span>
+                                <span class="text-pink-400 font-bold">80%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leadership & Communication -->
+                <div class="glass-card p-8 reveal stagger-3">
+                    <h3 class="text-xl font-bold mb-8 flex items-center gap-2">
+                        <i data-lucide="users" class="text-teal-400"></i> Leadership & Soft Skills
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Team Leadership</span>
+                                <span class="text-teal-400 font-bold">95%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="95"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Event Management</span>
+                                <span class="text-teal-400 font-bold">90%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Communication</span>
+                                <span class="text-teal-400 font-bold">90%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Problem Solving</span>
+                                <span class="text-teal-400 font-bold">90%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Collaboration</span>
+                                <span class="text-teal-400 font-bold">92%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="92"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="mt-12 glass-card p-8 reveal max-w-5xl mx-auto">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="languages" class="text-blue-400"></i> Languages
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="p-4 bg-white/5 rounded-xl border border-white/10 text-center">
+                        <p class="font-bold">English</p>
+                        <p class="text-xs text-white/50 tracking-wider">FLUENT</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-xl border border-white/10 text-center">
+                        <p class="font-bold">Telugu</p>
+                        <p class="text-xs text-white/50 tracking-wider">NATIVE</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-xl border border-white/10 text-center">
+                        <p class="font-bold">Hindi</p>
+                        <p class="text-xs text-white/50 tracking-wider">INTERMEDIATE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6">
+        <div class="container mx-auto">
+            <h2 class="section-title reveal shimmer-text">Key Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Project 1 -->
+                <div class="glass-card overflow-hidden tilt-card reveal reveal-left group" data-project-id="botnet">
+                    <div class="h-48 bg-gradient-to-br from-purple-900 to-cyan-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800" alt="BotNet Detection" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030014] to-transparent"></div>
+                        <div class="absolute bottom-4 left-6">
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full border border-purple-500/30">AI & Cybersecurity</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 group-hover:text-purple-400 transition-colors">Adaptive Botnet Detection Using Meta-Learning</h3>
+                        <ul class="text-white/60 text-sm space-y-2 mb-6">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-400 mt-1 shrink-0"></i>
+                                <span>98% accuracy on IoT datasets using meta-learning ensembles.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-400 mt-1 shrink-0"></i>
+                                <span>Self-learning updates reduced retraining time by 45%.</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 uppercase tracking-wider">Python</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 uppercase tracking-wider">Meta-Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card overflow-hidden tilt-card reveal reveal-up group" data-project-id="library">
+                    <div class="h-48 bg-gradient-to-br from-indigo-900 to-pink-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=800" alt="Digital Library" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030014] to-transparent"></div>
+                        <div class="absolute bottom-4 left-6">
+                            <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 text-xs rounded-full border border-indigo-500/30">Web Application</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 group-hover:text-pink-400 transition-colors">Digital Library for Engineering College</h3>
+                        <ul class="text-white/60 text-sm space-y-2 mb-6">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-pink-400 mt-1 shrink-0"></i>
+                                <span>Department-specific dashboards for resource access.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-pink-400 mt-1 shrink-0"></i>
+                                <span>Improved usage efficiency by 40% across campus.</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 uppercase tracking-wider">HTML/CSS</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 uppercase tracking-wider">JS</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 uppercase tracking-wider">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card overflow-hidden tilt-card reveal reveal-right group" data-project-id="explore">
+                    <div class="h-48 bg-gradient-to-br from-teal-900 to-blue-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=800" alt="Explore Nearby" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#030014] to-transparent"></div>
+                        <div class="absolute bottom-4 left-6">
+                            <span class="px-3 py-1 bg-teal-500/20 text-teal-300 text-xs rounded-full border border-teal-500/30">Location Platform</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 group-hover:text-teal-400 transition-colors">Explore Nearby Places</h3>
+                        <p class="text-white/80 text-sm font-medium mb-2">Interactive Location Discovery & Map Exploration Platform</p>
+                        <p class="text-white/60 text-xs mb-4">Flask-Based Web Application with OpenStreetMap Integration</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 uppercase tracking-wider">Python</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 uppercase tracking-wider">Flask</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 uppercase tracking-wider">Leaflet.js</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 uppercase tracking-wider">OSM API</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 uppercase tracking-wider">HTML/CSS</span>
+                            <span class="text-[10px] px-2 py-1 bg-white/5 rounded border border-white/10 uppercase tracking-wider">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 bg-white/[0.02]">
+        <div class="container mx-auto">
+            <h2 class="section-title reveal shimmer-text">What I Offer</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-card p-8 reveal stagger-1">
+                    <h3 class="text-xl font-bold mb-4">Web Development</h3>
+                    <p class="text-white/60 text-sm">Crafting responsive, high-performance websites with modern tech stacks.</p>
+                </div>
+                <div class="glass-card p-8 reveal stagger-2">
+                    <h3 class="text-xl font-bold mb-4">Python Development</h3>
+                    <p class="text-white/60 text-sm">Building scalable backends and automated scripts for various complex tasks.</p>
+                </div>
+                <div class="glass-card p-8 reveal stagger-3">
+                    <h3 class="text-xl font-bold mb-4">AI/ML Solutions</h3>
+                    <p class="text-white/60 text-sm">Designing intelligent models and data processing pipelines for predictive insights.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training & Activities Section -->
+    <section id="activities" class="py-24 px-6 bg-white/[0.02]">
+        <div class="container mx-auto">
+            <h2 class="section-title reveal shimmer-text">Training & Campus Activities</h2>
+            
+            <!-- Training Sub-section -->
+            <div class="max-w-4xl mx-auto space-y-12 mb-20">
+                <div class="relative pl-12 border-l-2 border-white/10 reveal reveal-left">
+                    <div class="absolute -left-[17px] top-0 w-8 h-8 bg-[#030014] border-2 border-purple-500 rounded-full flex items-center justify-center">
+                        <i data-lucide="terminal" class="w-4 h-4 text-purple-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold">Python Programming with AI | Training</h3>
+                    <p class="text-purple-400 mb-2">V Cube Software Solutions, HYD | May 2025 - Dec 2025</p>
+                    <ul class="text-white/60 text-sm space-y-2">
+                        <li>• Completed 8-month intensive program in AI, ML, Python, and MySQL.</li>
+                        <li>• Built end-to-end ML solutions and collaborated in agile teams.</li>
+                        <li>• Gained practical experience in debugging, problem-solving, and deployment across 2+ projects.</li>
+                    </ul>
+                </div>
+                <div class="relative pl-12 border-l-2 border-white/10 reveal reveal-left stagger-2">
+                    <div class="absolute -left-[17px] top-0 w-8 h-8 bg-[#030014] border-2 border-cyan-500 rounded-full flex items-center justify-center">
+                        <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold">Webmaster & Social Media Lead</h3>
+                    <p class="text-cyan-400 mb-2">IEEE SB NBKRIST | Jan 2023 - Jan 2025</p>
+                    <ul class="text-white/60 text-sm space-y-2">
+                        <li>• Optimized official website performance and user experience.</li>
+                        <li>• Coordinated Nexusverse Symposium with 228+ participants.</li>
+                        <li>• Boosted engagement by 40% through multi-platform social media strategy.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-card p-8 reveal reveal-up border-t-2 border-purple-500/30 stagger-1">
+                    <h3 class="text-xl font-bold mb-4">Nexusverse 2.0</h3>
+                    <p class="text-white/60 text-sm">National Symposium with 228+ participants. Led a team of 20+ volunteers for the Project Expo and registration management.</p>
+                </div>
+                <div class="glass-card p-8 reveal reveal-up border-t-2 border-cyan-500/30 stagger-2">
+                    <h3 class="text-xl font-bold mb-4">Innovacion Magazine</h3>
+                    <p class="text-white/60 text-sm">Served as Deputy Editor and lead designer, producing photography and promotional content for the branch.</p>
+                </div>
+                <div class="glass-card p-8 reveal reveal-up border-t-2 border-pink-500/30 stagger-3">
+                    <h3 class="text-xl font-bold mb-4">IEEE Day</h3>
+                    <p class="text-white/60 text-sm">Organized celebrations and technical workshops, boosting IEEE SB's online presence and engagement by 40%.</p>
+                </div>
+                <div class="glass-card p-8 reveal reveal-up border-t-2 border-blue-500/30 stagger-4">
+                    <h3 class="text-xl font-bold mb-4">Java Spring Event</h3>
+                    <p class="text-white/60 text-sm">Coordinated technical event sessions and volunteer activities for institutional certification programs.</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center reveal reveal-up stagger-5">
+                <p class="text-white/40 text-sm italic">...and various other workshops & hackathons</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 px-6 overflow-hidden">
+        <div class="container mx-auto">
+            <h2 class="section-title reveal shimmer-text">Words from Peers</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="glass-card p-8 reveal stagger-1 flex flex-col h-full hover:border-purple-500/40 hover:-translate-y-2 transition-all duration-500">
+                    <div class="mb-6">
+                        <i data-lucide="quote" class="w-8 h-8 text-purple-500/30"></i>
+                    </div>
+                    <p class="text-white/80 italic mb-8 flex-grow leading-relaxed">
+                        "Devi Swetha's leadership during Nexusverse 2.0 was exceptional. Her ability to manage complex registration systems while leading a large volunteer team demonstrated both her technical and organizational maturity."
+                    </p>
+                    <div class="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 flex items-center justify-center font-bold text-lg text-white">RK</div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Rahul Kumar</h4>
+                            <p class="text-white/40 text-xs">Event Coordinator, NBKRIST</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-card p-8 reveal stagger-2 flex flex-col h-full hover:border-cyan-500/40 hover:-translate-y-2 transition-all duration-500">
+                    <div class="mb-6">
+                        <i data-lucide="quote" class="w-8 h-8 text-cyan-500/30"></i>
+                    </div>
+                    <p class="text-white/80 italic mb-8 flex-grow leading-relaxed">
+                        "As Deputy Editor, Swetha brought a unique creative vision to Innovacion. Her design skills and attention to detail helped elevate our branch's digital presence significantly beyond expectations."
+                    </p>
+                    <div class="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-cyan-500 to-indigo-500 flex items-center justify-center font-bold text-lg text-white">AS</div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Anita Sharma</h4>
+                            <p class="text-white/40 text-xs">Editor-in-Chief, IEEE SB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-card p-8 reveal stagger-3 flex flex-col h-full hover:border-pink-500/40 hover:-translate-y-2 transition-all duration-500">
+                    <div class="mb-6">
+                        <i data-lucide="quote" class="w-8 h-8 text-pink-500/30"></i>
+                    </div>
+                    <p class="text-white/80 italic mb-8 flex-grow leading-relaxed">
+                        "Working together on our final year AI project was eye-opening. Swetha's proficiency in Python and her structured approach to machine learning models was instrumental in our project's success."
+                    </p>
+                    <div class="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-pink-500 to-purple-500 flex items-center justify-center font-bold text-lg text-white">VN</div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Vikas N.</h4>
+                            <p class="text-white/40 text-xs">Project Partner, AI/DS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-24 px-6 bg-white/[0.02]">
+        <div class="container mx-auto">
+            <h2 class="section-title reveal shimmer-text">Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <div class="glass-card p-8 flex items-center gap-6 reveal">
+                    <div class="w-16 h-16 bg-purple-500/20 rounded-xl flex items-center justify-center shrink-0">
+                        <i data-lucide="award" class="text-purple-400 w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold">Generative AI Career Essentials</h4>
+                        <p class="text-sm text-white/50">Microsoft & LinkedIn Learning</p>
+                        <p class="text-xs text-purple-400/60 mt-1 italic">5 hour learning path covering AI fundamentals</p>
+                    </div>
+                </div>
+                <div class="glass-card p-8 flex items-center gap-6 reveal">
+                    <div class="w-16 h-16 bg-cyan-500/20 rounded-xl flex items-center justify-center shrink-0">
+                        <i data-lucide="shield-check" class="text-cyan-400 w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold">Cyber Security and Privacy</h4>
+                        <p class="text-sm text-white/50">NPTEL | Proctored Exam</p>
+                        <p class="text-xs text-cyan-400/60 mt-1 italic">National Programme on Tech Enhanced Learning</p>
+                    </div>
+                </div>
+                <div class="glass-card p-8 flex items-center gap-6 reveal">
+                    <div class="w-16 h-16 bg-pink-500/20 rounded-xl flex items-center justify-center shrink-0">
+                        <i data-lucide="layers" class="text-pink-400 w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold">Full Stack App Dev Project</h4>
+                        <p class="text-sm text-white/50">IBM | Skills Network</p>
+                        <p class="text-xs text-pink-400/60 mt-1 italic">Online initiative and implementation project</p>
+                    </div>
+                </div>
+                <div class="glass-card p-8 flex items-center gap-6 reveal">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center shrink-0">
+                        <i data-lucide="binary" class="text-blue-400 w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold">Python for Data Science</h4>
+                        <p class="text-sm text-white/50">Udemy | Data Science Academy</p>
+                        <p class="text-xs text-blue-400/60 mt-1 italic">Hands-on exercises and real-time projects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Interests Section -->
+    <section id="interests" class="py-24 px-6 bg-white/[0.02]">
+        <div class="container mx-auto">
+            <h2 class="section-title reveal shimmer-text">Interests</h2>
+            <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-stretch">
+                <!-- Academic & Professional -->
+                <div class="reveal reveal-left flex flex-col">
+                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <i data-lucide="brain" class="text-purple-400"></i> Academic & Professional
+                    </h3>
+                    <div class="grid gap-4 flex-grow">
+                        <div class="glass-card p-6 flex items-center gap-6 hover:bg-white/10 transition-colors group reveal reveal-up stagger-1">
+                            <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <i data-lucide="cpu" class="text-purple-400 w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">AI & Machine Learning</h4>
+                                <p class="text-sm text-white/50 leading-relaxed">Exploring neural networks and predictive modeling.</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 flex items-center gap-6 hover:bg-white/10 transition-colors group reveal reveal-up stagger-2">
+                            <div class="w-14 h-14 bg-cyan-500/20 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <i data-lucide="terminal" class="text-cyan-400 w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Python Development</h4>
+                                <p class="text-sm text-white/50 leading-relaxed">Building efficient backends and automation scripts.</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 flex items-center gap-6 hover:bg-white/10 transition-colors group reveal reveal-up stagger-3">
+                            <div class="w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <i data-lucide="globe" class="text-blue-400 w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Web Development</h4>
+                                <p class="text-sm text-white/50 leading-relaxed">Creating responsive and interactive web interfaces.</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 flex items-center gap-6 hover:bg-white/10 transition-colors group reveal reveal-up stagger-4">
+                            <div class="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <i data-lucide="pen-tool" class="text-indigo-400 w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Content Creation</h4>
+                                <p class="text-sm text-white/50 leading-relaxed">Designing technical articles and creative media content.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative Interests -->
+                <div class="reveal reveal-right flex flex-col">
+                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <i data-lucide="palette" class="text-cyan-400"></i> Creative Interests
+                    </h3>
+                    <div class="grid gap-4 flex-grow">
+                        <div class="glass-card p-6 flex items-center gap-6 group hover:bg-white/10 transition-colors reveal reveal-right stagger-1">
+                            <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <i data-lucide="camera" class="text-purple-400 w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Photography</h4>
+                                <p class="text-sm text-white/50 leading-relaxed">Capturing creative visuals and storytelling through photography.</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 flex items-center gap-6 group hover:bg-white/10 transition-colors reveal reveal-right stagger-2">
+                            <div class="w-14 h-14 bg-cyan-500/20 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <i data-lucide="video" class="text-cyan-400 w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Video Editing</h4>
+                                <p class="text-sm text-white/50 leading-relaxed">Creating smooth cinematic edits with engaging visuals.</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 flex items-center gap-6 group hover:bg-white/10 transition-colors reveal reveal-right stagger-3">
+                            <div class="w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <i data-lucide="share-2" class="text-blue-400 w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Social Media Management</h4>
+                                <p class="text-sm text-white/50 leading-relaxed">Managing digital content, branding, and audience engagement.</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 flex items-center gap-6 group hover:bg-white/10 transition-colors reveal reveal-right stagger-4">
+                            <div class="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <i data-lucide="layout" class="text-indigo-400 w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Creative Design with Canva</h4>
+                                <p class="text-sm text-white/50 leading-relaxed">Designing modern creatives, presentations, and social media content.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 relative overflow-hidden">
+        <!-- New Background Particles for this section -->
+        <div id="contact-particles" class="absolute inset-0 pointer-events-none"></div>
+
+        <div class="container mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="section-title !mb-4 shimmer-text">Get In Touch</h2>
+                <p class="text-white/60 max-w-2xl mx-auto text-lg">Let’s build something amazing together. I'm always open to new projects, collaborations, or just a friendly chat!</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Info Section -->
+                <div class="lg:col-span-2 grid md:grid-cols-2 gap-6">
+                    <!-- Status Card -->
+                    <div class="contact-card glow-purple reveal reveal-left">
+                        <div class="flex justify-between items-start">
+                            <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                                <i data-lucide="activity" class="text-purple-400"></i>
+                            </div>
+                            <div class="status-badge status-online">
+                                <div></div> Available for Work
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Current Status</h3>
+                            <p class="text-white/50 text-sm">Open to Opportunities & Freelance</p>
+                        </div>
+                    </div>
+
+                    <!-- Email Card -->
+                    <a href="mailto:pdeviswetha9@gmail.com" class="contact-card glow-cyan reveal reveal-up">
+                        <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
+                            <i data-lucide="mail" class="text-cyan-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Email Me</h3>
+                            <p class="text-white/50 text-sm">pdeviswetha9@gmail.com</p>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="absolute top-6 right-6 text-white/20 w-5 h-5"></i>
+                    </a>
+
+                    <!-- Phone Card -->
+                    <a href="tel:9849936601" class="contact-card glow-pink reveal reveal-left">
+                        <div class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center">
+                            <i data-lucide="phone" class="text-pink-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Phone Number</h3>
+                            <p class="text-white/50 text-sm">9849936601</p>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="absolute top-6 right-6 text-white/20 w-5 h-5"></i>
+                    </a>
+
+                    <!-- Resume Card -->
+                    <a href="https://drive.google.com/file/d/1kIdBArnMi-5j9ZkdxlMfoRttoWpZ7NPy/view?usp=sharing" target="_blank" class="contact-card glow-purple reveal reveal-up group">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center group-hover:bg-purple-500/40 transition-colors">
+                            <i data-lucide="file-text" class="text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Download Resume</h3>
+                            <p class="text-white/50 text-sm">Google Drive | PDF format</p>
+                        </div>
+                        <i data-lucide="external-link" class="absolute top-6 right-6 text-white/20 group-hover:text-purple-400 transition-colors w-5 h-5"></i>
+                    </a>
+
+                    <!-- Socials Card (Full Width) -->
+                    <div class="md:col-span-2 contact-card reveal reveal-up">
+                        <h3 class="text-lg font-bold mb-6">Connect across platforms</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://www.linkedin.com/in/deviswethapasupuleti/" target="_blank" class="social-icon group si-linkedin" aria-label="LinkedIn">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/deviswetha" target="_blank" class="social-icon group si-github" aria-label="GitHub">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="https://x.com/devi_sweth35409" target="_blank" class="social-icon group si-twitter" aria-label="X (Twitter)">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                            <a href="https://www.instagram.com/devi_swetha_p/" target="_blank" class="social-icon group si-instagram" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Section -->
+                <div class="glass-card p-8 reveal reveal-right relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[60px] rounded-full"></div>
+                    <h3 class="text-2xl font-bold mb-6">Direct Message</h3>
+                    <form id="contact-form" class="space-y-5 relative z-10">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-white/50 mb-2">FullName</label>
+                            <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all" placeholder="Enter your name">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-white/50 mb-2">Email Address</label>
+                            <input type="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all" placeholder="your@email.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-white/50 mb-2">Your Message</label>
+                            <textarea rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all resize-none" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full group flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee Tech Stack -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="mx-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 flex items-center gap-2">
+                <i data-lucide="brain-circuit" class="w-3 h-3"></i> AI & Machine Learning
+            </span>
+            <span class="mx-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 flex items-center gap-2">
+                <i data-lucide="layout" class="w-3 h-3"></i> Full Stack Development
+            </span>
+            <span class="mx-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 flex items-center gap-2">
+                <i data-lucide="terminal" class="w-3 h-3"></i> Python Expert
+            </span>
+            <span class="mx-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 flex items-center gap-2">
+                <i data-lucide="atom" class="w-3 h-3"></i> React & Modern UI
+            </span>
+            <span class="mx-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 flex items-center gap-2">
+                <i data-lucide="database" class="w-3 h-3"></i> Backend Systems
+            </span>
+            <span class="mx-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 flex items-center gap-2">
+                <i data-lucide="cloud" class="w-3 h-3"></i> Computer Architecture
+            </span>
+            <!-- Duplicate for infinite effect -->
+            <span class="mx-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 flex items-center gap-2">
+                <i data-lucide="brain-circuit" class="w-3 h-3"></i> AI & Machine Learning
+            </span>
+            <span class="mx-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 flex items-center gap-2">
+                <i data-lucide="layout" class="w-3 h-3"></i> Full Stack Development
+            </span>
+            <span class="mx-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 flex items-center gap-2">
+                <i data-lucide="terminal" class="w-3 h-3"></i> Python Expert
+            </span>
+            <span class="mx-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 flex items-center gap-2">
+                <i data-lucide="atom" class="w-3 h-3"></i> React & Modern UI
+            </span>
+        </div>
+    </div>
+
+    <!-- Futuristic Footer -->
+    <footer class="relative pb-12 pt-0 px-6 overflow-hidden">
+        <!-- Floating Blobs Background -->
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-600/10 blur-[120px] rounded-full"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-cyan-600/10 blur-[120px] rounded-full"></div>
+
+        <div class="container mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-16 items-start">
+                <!-- Branding & Tagline -->
+                <div class="lg:col-span-2 space-y-6">
+                    <a href="#" class="text-3xl font-bold font-display neon-text block">Devi Swetha</a>
+                    <p class="text-white/50 max-w-sm text-lg leading-relaxed">
+                        Building intelligent digital experiences with creativity & AI. Crafting the future one line of code at a time.
+                    </p>
+                    <div class="flex items-center gap-4 pt-4">
+                        <a href="#contact" class="glass-pill flex items-center gap-2 hover:border-purple-500/50">
+                            <i data-lucide="zap" class="w-3 h-3"></i> Hire Me
+                        </a>
+                        <a href="https://drive.google.com/file/d/1kIdBArnMi-5j9ZkdxlMfoRttoWpZ7NPy/view?usp=sharing" target="_blank" class="glass-pill flex items-center gap-2 hover:border-cyan-500/50">
+                            <i data-lucide="download" class="w-3 h-3"></i> Resume
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="space-y-6">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-white/30">Connect</h3>
+                    <div class="flex flex-col space-y-4">
+                        <a href="#home" class="footer-nav-link">Work History</a>
+                        <a href="#projects" class="footer-nav-link">Personal Projects</a>
+                        <a href="#about" class="footer-nav-link">Expertise</a>
+                        <a href="#contact" class="footer-nav-link">Collaborate</a>
+                    </div>
+                </div>
+
+                <!-- Let's Connect CTA -->
+                <div class="glass-card p-6 border-white/5 bg-white/[0.01]">
+                    <h3 class="text-xl font-bold mb-4">Let's Connect</h3>
+                    <p class="text-white/40 text-sm mb-6">Stay updated with my latest projects and tech insights.</p>
+                    <div class="flex gap-3">
+                        <a href="https://www.linkedin.com/in/deviswethapasupuleti/" target="_blank" class="w-10 h-10 bg-white/5 hover:bg-purple-600/20 rounded-lg flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-purple-500/50 group">
+                            <i class="fa-brands fa-linkedin-in text-white/50 group-hover:text-purple-400"></i>
+                        </a>
+                        <a href="https://github.com/deviswetha" target="_blank" class="w-10 h-10 bg-white/5 hover:bg-white/10 rounded-lg flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-white/50 group">
+                            <i class="fa-brands fa-github text-white/50 group-hover:text-white"></i>
+                        </a>
+                        <a href="https://www.instagram.com/devi_swetha_p/" target="_blank" class="w-10 h-10 bg-white/5 hover:bg-pink-600/20 rounded-lg flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-pink-500/50 group">
+                            <i class="fa-brands fa-instagram text-white/50 group-hover:text-pink-400"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 relative z-10">
+                <p class="text-[10px] text-white/20 uppercase tracking-[0.2em]">
+                    © 2026 Devi Swetha. All rights reserved • Made with <span class="text-purple-500">❤️</span> & AI
+                </p>
+                <div class="flex gap-6 text-[10px] text-white/20 uppercase tracking-[0.2em] font-medium">
+                    <a href="#" class="hover:text-purple-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-purple-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="back-to-top" class="back-to-top">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <!-- Page Transition Overlay -->
+    <div class="page-transition fixed inset-0 bg-purple-600 z-[9999] pointer-events-none origin-bottom scale-y-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"></div>
+
+    <!-- Full Screen Project Page -->
+    <div id="project-page" class="fixed inset-0 z-[9998] bg-[#030014] overflow-y-auto hidden opacity-0 transition-opacity duration-500 scroll-smooth">
+        <!-- Project Nav -->
+        <nav class="fixed top-0 left-0 w-full z-[1001] px-6 py-6 transition-all duration-500 bg-[#030014]/60 backdrop-blur-3xl border-b border-white/5">
+            <div class="container mx-auto flex items-center justify-between">
+                <div class="flex items-center gap-6">
+                    <button id="close-project" class="flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-purple-500/20 hover:border-purple-500/50 transition-all group cursor-pointer active:scale-95">
+                        <i data-lucide="arrow-left" class="w-4 h-4 text-white group-hover:text-purple-400"></i>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 group-hover:text-white hidden sm:block">Portfolio</span>
+                    </button>
+                    <!-- Brand -->
+                    <a href="#home" class="text-xl font-bold font-display neon-text hidden md:block close-project-link">Devi Swetha</a>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden lg:flex items-center space-x-8 text-[10px] uppercase tracking-widest font-bold">
+                    <a href="#home" class="hover:text-purple-400 transition-colors close-project-link">Home</a>
+                    <a href="#about" class="hover:text-purple-400 transition-colors close-project-link">About</a>
+                    <a href="#projects" class="hover:text-purple-400 transition-colors close-project-link">Projects</a>
+                    <a href="#contact" class="hover:text-purple-400 transition-colors close-project-link">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <a href="https://drive.google.com/file/d/1kIdBArnMi-5j9ZkdxlMfoRttoWpZ7NPy/view?usp=sharing" target="_blank" class="text-[10px] uppercase tracking-widest font-bold text-white/40 hover:text-white transition-colors hidden sm:block">Resume</a>
+                    <a href="#contact" class="btn-primary-small close-project-link">Hire Me</a>
+                </div>
+            </div>
+        </nav>
+
+        <div id="project-dynamic-content" class="min-h-screen">
+            <!-- Content will be injected by JavaScript -->
+        </div>
+
+        <!-- Project Footer -->
+        <footer class="py-20 px-6 border-t border-white/5 bg-black/40">
+            <div class="container mx-auto text-center space-y-12">
+                <div class="space-y-4">
+                    <h2 class="text-3xl font-bold">Have a similar project in mind?</h2>
+                    <p class="text-white/40 max-w-xl mx-auto">I'm always open to discussing new AI solutions or full-stack opportunities.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="#contact" class="btn-primary-small group flex items-center gap-3 close-project-link">
+                        Hire Me <i data-lucide="zap" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <div class="pt-20 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8 text-white/30 text-[10px] uppercase tracking-widest font-bold">
+                    <p>© 2026 Devi Swetha. AI Engineering Portfolio.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="/src/script.js"></script>
+</body>
+</html>
