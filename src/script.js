@@ -203,10 +203,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
+            const rotateX = (y - centerY) / 10; // Increased sensitivity
+            const rotateY = (centerX - x) / 10; // Increased sensitivity
             
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`; // Slightly zoomed in
         });
 
         card.addEventListener('mouseleave', () => {
@@ -504,10 +504,10 @@ if (contactForm) {
             mediaType: 'gallery',
             banner: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1600",
             gallery: [
-                "b1.png",
-                "b2.png",
-                "b3.png",
-                "b4.jpg"
+                "/b1.png",
+                "/b2.png",
+                "/b3.png",
+                "/b4.jpg"
             ],
             github: "https://github.com/deviswetha",
             demo: "#",
@@ -531,10 +531,10 @@ if (contactForm) {
             mediaType: 'gallery',
             banner: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=1600",
             gallery: [
-                "d1.png",
-                "d2.png",
-                "d3.png",
-                "d4.png"
+                "/d1.png",
+                "/d2.png",
+                "/d3.png",
+                "/d4.png"
             ],
             github: "https://github.com/deviswetha",
             demo: "#",
@@ -557,7 +557,7 @@ if (contactForm) {
             category: "Location Platform",
             mediaType: 'video',
             banner: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80&w=1600",
-            video: "nb1 .mp4",
+            video: "/nb1.mp4",
             github: "https://github.com/deviswetha",
             demo: "#",
             stack: ["Flask", "Python", "Leaflet.js", "OpenStreetMap API"],
@@ -608,7 +608,7 @@ if (contactForm) {
                     <div class="grid grid-cols-2 gap-4 group">
                         ${data.gallery.map(img => `
                             <div class="relative aspect-square overflow-hidden rounded-2xl glass-card border-none group/img cursor-zoom-in" onclick="window.openLightbox('${img}')">
-                                <img src="${img}" class="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110" alt="">
+                                <img src="${img}" class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover/img:scale-105 group-hover/img:rotate-1 group-hover/img:grayscale-0 grayscale" alt="">
                                 <div class="absolute inset-0 bg-purple-500/20 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
                                     <i data-lucide="maximize-2" class="text-white w-6 h-6"></i>
                                 </div>
@@ -722,8 +722,14 @@ if (contactForm) {
     window.openLightbox = (src) => {
         const lb = document.createElement('div');
         lb.className = 'fixed inset-0 z-[10000] bg-black/95 flex items-center justify-center p-6 cursor-zoom-out animate-in fade-in duration-300';
-        lb.innerHTML = `<img src="${src}" class="max-w-full max-h-full rounded-xl shadow-2xl transition-transform duration-500 scale-95" id="lb-img">`;
+        lb.innerHTML = `
+            <button class="absolute top-6 right-6 text-white hover:text-purple-400 transition-colors z-[10001]" onclick="event.stopPropagation(); this.closest('div.fixed').remove()">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            <img src="${src}" class="max-w-full max-h-full rounded-xl shadow-2xl transition-transform duration-500 scale-95" id="lb-img">
+        `;
         document.body.appendChild(lb);
+        window.lucide.createIcons();
         setTimeout(() => lb.querySelector('img').style.transform = 'scale(1)', 10);
         lb.onclick = () => {
             lb.classList.add('animate-out', 'fade-out');
