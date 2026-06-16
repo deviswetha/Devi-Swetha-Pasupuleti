@@ -123,12 +123,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (container.dataset.animated) return;
         container.dataset.animated = "true";
         
-        const progressBars = container.querySelectorAll('.skill-progress');
-        progressBars.forEach((bar, index) => {
-            const width = bar.getAttribute('data-width');
-            setTimeout(() => {
-                bar.style.width = width + '%';
-            }, index * 100); // Stagger by 100ms
+        // Custom animation for the new cards
+        const progressBar = container.querySelectorAll('.skill-progress-bar');
+        const counters = container.querySelectorAll('.counter');
+        
+        progressBar.forEach((bar, index) => {
+            const target = bar.getAttribute('data-target');
+            bar.style.width = target + '%';
+        });
+
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            let count = 0;
+            const duration = 2000;
+            const startTime = performance.now();
+
+            const update = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                count = Math.floor(progress * target);
+                counter.innerText = count;
+
+                if (progress < 1) requestAnimationFrame(update);
+            };
+            requestAnimationFrame(update);
         });
     }
 
